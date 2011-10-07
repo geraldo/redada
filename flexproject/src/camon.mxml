@@ -1,0 +1,56 @@
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" xmlns:apps="flare.apps.*" xmlns:flex="flare.flex.*" xmlns:local="*" 
+	creationPolicy="auto" applicationComplete="init()" frameRate="30"
+	backgroundColor="#222222" backgroundAlpha="50" >
+	
+	<mx:Script>
+	<![CDATA[
+		import mx.collections.ArrayCollection;
+	
+		[Bindable]
+		private var nodeCol:ArrayCollection;
+
+		import Camon; // my .as class
+		private var my:Camon;
+		private function init(): void {
+			my = new Camon(onComplete,onChange);
+			myCanvas.addChild(my.getUIComponent());
+		}
+		
+		public function onComplete(arr:Array):void{
+			nodeCol = new ArrayCollection(arr);
+		}
+		
+		public function onChange(label:String):void{
+			selectItem(label);
+		}
+		
+		private function selectItem(label:String):void{
+			lista.findString(label);
+		}
+				
+		private function setCenter(selItem:Object):void{
+			my.setCenter(selItem.label, false);
+			//selectItem(selItem.label);
+			myCanvas.setFocus();
+		}
+	]]>
+	</mx:Script>
+
+	<mx:HBox width="100%" height="100%" horizontalAlign="center" verticalAlign="middle" 
+		backgroundColor="#222222" backgroundAlpha="50" >
+		<mx:DataGrid width="200" height="100%" id="lista" dataProvider="{nodeCol}" 
+			change="setCenter(DataGrid(event.target).selectedItem);">
+            <mx:columns>
+                <mx:DataGridColumn dataField="label" headerText="Agente"/>
+                <mx:DataGridColumn dataField="data" width="30" headerText="Nº"/>
+                <!--<mx:DataGridColumn dataField="id" width="20" headerText="id"/>-->
+            </mx:columns>
+        </mx:DataGrid>
+		<mx:Canvas id="myCanvas" height="100%" width="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<vis:FlareVis xmlns:vis="flare.flex.*" verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	id="vis" width="{myCanvas.width}" height="{myCanvas.height}"
+	includeInLayout="true" focusEnabled="true"/>
+		</mx:Canvas>
+	</mx:HBox>
+</mx:Application>

@@ -1,7 +1,7 @@
-REDADA is an interactive visualization of weighted graphs using GRAPHML files. It's based on flare ActionScript library (http://flare.prefuse.org/). 
+REDADA is an interactive visualization of weighted graphs using GraphML files. It's based on flare ActionScript library (http://flare.prefuse.org/). 
 
-REDAD exists in two versions: 
+REDADA exists in two versions: As a simple graph or in addition with a list of nodes showing their name and the amount of connections.
 
-REDADA was sponsored by YPRODUCTIONS (http://ypsite.net/) for their mapping projects REDADA ALICANTE (http://ypsite.net/redada/mapa-de-conexiones/) y REDADA MURCIA (http://www.ypsite.net/capital.reactiva/conexion/capital_reactiva.html).
+REDADA was developed for YPRODUCTIONS (http://ypsite.net/) who used it for their mapping projects REDADA ALICANTE (http://ypsite.net/redada/mapa-de-conexiones/) y REDADA MURCIA (http://www.ypsite.net/capital.reactiva/conexion/capital_reactiva.html).
 
 License: GPLv3
